@@ -8,6 +8,7 @@ from flask import Flask, render_template, request
 from load import init
 from utils import load_prep_img
 
+class_names = []
 
 model = init()
 
@@ -18,6 +19,10 @@ app.config["DEBUG"] = os.environ.get("DEBUG")
 app.config["ENV"] = os.environ.get("ENV")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
+
+@app.route("/index", methods=["GET"])
+def index():
+	return render_template("index.html")
 
 @app.route("/predict", methods=["POST"])
 def prediction():

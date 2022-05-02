@@ -1,3 +1,5 @@
 flask
 secrets
 tensorflow_hub
+black
+python-dotenv
