@@ -2,6 +2,7 @@ import os
 from secrets import token_hex
 
 import numpy as np
+import tensorflow as tf
 from flask import Flask, render_template, request
 
 from load import init
@@ -25,7 +26,7 @@ def prediction():
 	img_data.save(img_data_fname)	
 	loaded_img = load_prep_img(img_data_fname)
 
-	pred = model.predict(tf.expand_dims(img, axis=0))
+	pred = model.predict(tf.expand_dims(loaded_img, axis=0))
 
 	if len(pred[0]) > 1:
 		pred_class = class_names[tf.argmax(pred[0])]
